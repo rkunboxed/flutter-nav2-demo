@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "flutter-nav2-demo",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Provider",
+            "program": "lib/main_provider.dart",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Routemaster",
+            "program": "lib/main_routemaster.dart",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "QLevar",
+            "program": "lib/main_qlevar.dart",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Routemaster Release",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "release",
+            "program": "lib/main_routemaster.dart"
+        },
+    ]
+}
