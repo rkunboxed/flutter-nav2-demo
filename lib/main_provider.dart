@@ -34,6 +34,7 @@ class DemoApp extends StatelessWidget {
 class DemoAppRouterDelegate extends RouterDelegate<DemoAppRouteConfig> with ChangeNotifier, PopNavigatorRouterDelegateMixin {
   DemoAppRouterDelegate() {
     //this is how we pass the notification from the route manager to the delegate
+    //and ensure the change makes it back to the platform
     routeManager.addListener(notifyListeners);
   }
   final RouteManager routeManager = RouteManager();
