@@ -39,9 +39,6 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: 15),
                     GestureDetector(
                       onTap: () {
-                        //TODO create new addPage method in the delegate so something like this will work
-                        //Router.of(context).routerDelegate.addNewPage(DemoAppRouteData.country('italy'));
-                        //Router.of(context).routerDelegate<DemoAppRouterDelegate>.addNewPage(DemoAppRouteData.country('italy'));
                         routeManager.setNewRoutePath(DemoAppRouteConfig.country('italy'));
                       },
                       child: Image.asset('assets/images/italy/1.jpg', width: 400),
