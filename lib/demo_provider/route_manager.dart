@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_nav2_demo/common/route_data_model.dart';
+import 'package:flutter_nav2_demo/common/route_config.dart';
 import 'package:flutter_nav2_demo/demo_provider/country_landing.dart';
 import 'package:flutter_nav2_demo/demo_provider/home.dart';
 import 'package:flutter_nav2_demo/common/not_found_page.dart';
@@ -18,7 +18,7 @@ class RouteManager extends ChangeNotifier {
     ),
   ];
 
-  DemoAppRouteData get currentRouteData {
+  DemoAppRouteConfig get currentRouteData {
     return RouteUtils.parseRoute(Uri.parse(_pages.last.name!));
   }
 
@@ -28,7 +28,7 @@ class RouteManager extends ChangeNotifier {
   }
 
   /// This is where we handle new route information and manage the pages list
-  Future<void> setNewRoutePath(DemoAppRouteData configuration) async {
+  Future<void> setNewRoutePath(DemoAppRouteConfig configuration) async {
     if (configuration.isUnknown) {
       // Handling 404
       _pages.add(
@@ -55,5 +55,26 @@ class RouteManager extends ChangeNotifier {
     }
     notifyListeners();
     return;
+  }
+
+  DemoAppRouteConfig parseRoute(Uri uri) {
+    List<String> countries = ['italy', 'spain', 'holland', 'columbia'];
+
+    // Handle '/'
+    if (uri.pathSegments.isEmpty) {
+      return DemoAppRouteConfig.home();
+    }
+
+    // Handle '/country/:country'
+    if (uri.pathSegments.length == 2) {
+      if (uri.pathSegments[0] == 'country') {
+        if (countries.contains(uri.pathSegments[1])) {
+          return DemoAppRouteConfig.country(uri.pathSegments[1]);
+        }
+      }
+    }
+
+    // Handle unknown routes
+    return DemoAppRouteConfig.unknown();
   }
 }

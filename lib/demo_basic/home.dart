@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nav2_demo/demo_basic/country_landing.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key, required this.title}) : super(key: key);
+  HomePage({Key? key, required this.title, required this.callback}) : super(key: key);
 
   final String title;
+  final void Function(Page) callback;
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -33,7 +35,9 @@ class _HomePageState extends State<HomePage> {
                     Text('Italy', style: Theme.of(context).textTheme.headline5),
                     const SizedBox(height: 15),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        widget.callback(MaterialPage(key: UniqueKey(), child: CountryLanding('italy')));
+                      },
                       child: Image.asset('assets/images/italy/1.jpg', width: 400),
                     ),
                   ],
@@ -44,7 +48,9 @@ class _HomePageState extends State<HomePage> {
                     Text('Spain', style: Theme.of(context).textTheme.headline5),
                     const SizedBox(height: 15),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        widget.callback(MaterialPage(key: UniqueKey(), child: CountryLanding('spain')));
+                      },
                       child: Image.asset('assets/images/spain/1.jpg', width: 400),
                     ),
                   ],

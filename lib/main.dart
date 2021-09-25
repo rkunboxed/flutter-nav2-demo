@@ -7,7 +7,32 @@ void main() {
   runApp(DemoApp());
 }
 
-class DemoApp extends StatelessWidget {
+class DemoApp extends StatefulWidget {
+  @override
+  _DemoAppState createState() => _DemoAppState();
+}
+
+class _DemoAppState extends State<DemoApp> {
+  final List<Page> _pages = [];
+
+  void _addPage(Page newPage) {
+    setState(() {
+      _pages.add(newPage);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _addPage(MaterialPage(
+      key: ValueKey('VacationDestinationsList'),
+      child: HomePage(
+        title: 'Flutter Router Based Navigation Demo',
+        callback: _addPage,
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,15 +42,19 @@ class DemoApp extends StatelessWidget {
       ),
       //use Navigator widget w/ new pages argument
       home: Navigator(
-        pages: [
-          MaterialPage(
-            key: ValueKey('VacationDestinationsList'),
-            child: HomePage(
-              title: 'Flutter Router Based Navigation Demo',
-            ),
-          )
-        ],
-        onPopPage: (route, result) => route.didPop(result),
+        pages: List.unmodifiable(_pages),
+        onPopPage: (route, result) {
+          if (!route.didPop(result)) {
+            return false;
+          }
+
+          // Update the list of pages by removing the last page
+          setState(() {
+            _pages.removeLast();
+          });
+
+          return true;
+        },
       ),
     );
   }

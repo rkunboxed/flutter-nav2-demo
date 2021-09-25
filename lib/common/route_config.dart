@@ -1,17 +1,20 @@
-class DemoAppRouteData {
+//object we will use to describe our current path
+class DemoAppRouteConfig {
   final String? country;
   final bool isUnknown;
 
-  DemoAppRouteData.home()
+  //define initializers for the types of pages
+  DemoAppRouteConfig.home()
       : country = null,
         isUnknown = false;
 
-  DemoAppRouteData.country(this.country) : isUnknown = false;
+  DemoAppRouteConfig.country(this.country) : isUnknown = false;
 
-  DemoAppRouteData.unknown()
+  DemoAppRouteConfig.unknown()
       : country = null,
         isUnknown = true;
 
+  //getters for the types
   bool get isHomePage => country == null;
 
   bool get isCountryPage => country != null;

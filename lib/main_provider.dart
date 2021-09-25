@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:flutter_nav2_demo/common/route_data_model.dart';
+import 'package:flutter_nav2_demo/common/route_config.dart';
 import 'package:flutter_nav2_demo/demo_provider/route_manager.dart';
 import 'package:provider/provider.dart';
 
 import 'demo_provider/route_utils.dart';
+
+//BASED ON DOMINIK ROSZKOWSKI'S EXAMPLE HERE:
+//https://github.com/orestesgaolin/navigator_20_example/blob/master/lib/main_router.dart
 
 void main() {
   //setUrlStrategy(PathUrlStrategy());
@@ -28,8 +31,9 @@ class DemoApp extends StatelessWidget {
 }
 
 //STATE MANAGED IN ROUTE MANAGER
-class DemoAppRouterDelegate extends RouterDelegate<DemoAppRouteData> with ChangeNotifier, PopNavigatorRouterDelegateMixin {
+class DemoAppRouterDelegate extends RouterDelegate<DemoAppRouteConfig> with ChangeNotifier, PopNavigatorRouterDelegateMixin {
   DemoAppRouterDelegate() {
+    //this is how we pass the notification from the route manager to the delegate
     routeManager.addListener(notifyListeners);
   }
   final RouteManager routeManager = RouteManager();
@@ -43,7 +47,7 @@ class DemoAppRouterDelegate extends RouterDelegate<DemoAppRouteData> with Change
           return Navigator(
             key: navigatorKey,
             onPopPage: _onPopPage,
-            pages: List.of(routeManager.pages),
+            pages: routeManager.pages,
           );
         },
       ),
@@ -66,19 +70,19 @@ class DemoAppRouterDelegate extends RouterDelegate<DemoAppRouteData> with Change
   GlobalKey<NavigatorState> get navigatorKey => routeManager.navigatorKey;
 
   @override
-  DemoAppRouteData get currentConfiguration => routeManager.currentRouteData;
+  DemoAppRouteConfig get currentConfiguration => routeManager.currentRouteData;
 
   @override
-  Future<void> setNewRoutePath(DemoAppRouteData configuration) async {
+  Future<void> setNewRoutePath(DemoAppRouteConfig configuration) async {
     await routeManager.setNewRoutePath(configuration);
   }
 }
 
-class DemoAppRouteInfoParser extends RouteInformationParser<DemoAppRouteData> {
+class DemoAppRouteInfoParser extends RouteInformationParser<DemoAppRouteConfig> {
   @override
-  Future<DemoAppRouteData> parseRouteInformation(RouteInformation routeInformation) async {
+  Future<DemoAppRouteConfig> parseRouteInformation(RouteInformation routeInformation) async {
     //returns a future to provide for maximum flexibility.
-    //Example: you want to do a DB lookup on the route before returning the config
+    //Example: maybe you want to do a DB lookup on the route before returning the config
 
     if (routeInformation.location != null) {
       final uri = Uri.parse(routeInformation.location!);
@@ -86,12 +90,13 @@ class DemoAppRouteInfoParser extends RouteInformationParser<DemoAppRouteData> {
     }
 
     // Handle unknown routes
-    return DemoAppRouteData.unknown();
+    return DemoAppRouteConfig.unknown();
   }
 
   //communicate back to the browser to update the URL bar
+  //reverse of the above method
   @override
-  RouteInformation restoreRouteInformation(DemoAppRouteData routeData) {
+  RouteInformation restoreRouteInformation(DemoAppRouteConfig routeData) {
     if (routeData.isHomePage) {
       return RouteInformation(location: '/');
     }

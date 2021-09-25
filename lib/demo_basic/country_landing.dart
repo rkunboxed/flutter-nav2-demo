@@ -10,10 +10,7 @@ class CountryLanding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(country.toUpperCase()),
-          automaticallyImplyLeading: false,
-        ),
+        appBar: AppBar(title: Text(country.toUpperCase())),
         body: FutureBuilder(
           future: DefaultAssetBundle.of(context).loadString('assets/images/image-list.json'),
           builder: (BuildContext context, snapshot) {
@@ -35,20 +32,6 @@ class CountryLanding extends StatelessWidget {
             }
             return const SizedBox.shrink();
           },
-        ),
-        bottomNavigationBar: Builder(builder: (BuildContext context) {
-          if (country != 'italy') {
-            return TextButton(
-              onPressed: () {},
-              child: Text('I like Italy better.'),
-            );
-          } else if (country != 'spain') {
-            return TextButton(
-              onPressed: () {},
-              child: Text('Spain is really the best.'),
-            );
-          }
-          return const SizedBox.shrink();
-        }));
+        ));
   }
 }

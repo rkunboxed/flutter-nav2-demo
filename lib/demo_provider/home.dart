@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_nav2_demo/common/route_data_model.dart';
+import 'package:flutter_nav2_demo/common/route_config.dart';
 import 'package:flutter_nav2_demo/demo_provider/route_manager.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                         //TODO create new addPage method in the delegate so something like this will work
                         //Router.of(context).routerDelegate.addNewPage(DemoAppRouteData.country('italy'));
                         //Router.of(context).routerDelegate<DemoAppRouterDelegate>.addNewPage(DemoAppRouteData.country('italy'));
-                        routeManager.setNewRoutePath(DemoAppRouteData.country('italy'));
+                        routeManager.setNewRoutePath(DemoAppRouteConfig.country('italy'));
                       },
                       child: Image.asset('assets/images/italy/1.jpg', width: 400),
                     ),
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: 15),
                     GestureDetector(
                       onTap: () {
-                        routeManager.setNewRoutePath(DemoAppRouteData.country('spain'));
+                        routeManager.setNewRoutePath(DemoAppRouteConfig.country('spain'));
                       },
                       child: Image.asset('assets/images/spain/1.jpg', width: 400),
                     ),

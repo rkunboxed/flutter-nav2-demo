@@ -19,10 +19,12 @@ class DemoApp extends StatelessWidget {
       child: Builder(
         builder: (context) {
           return MaterialApp.router(
-            routerDelegate: RoutemasterDelegate(routesBuilder: (context) {
-              final appState = Provider.of<AppState>(context);
-              return RoutemasterRoutes().buildRouteMap(appState);
-            }),
+            routerDelegate: RoutemasterDelegate(
+              routesBuilder: (context) {
+                final appState = Provider.of<AppState>(context);
+                return RoutemasterRoutes.buildRouteMap(appState);
+              },
+            ),
             routeInformationParser: RoutemasterParser(),
             theme: ThemeData(
               primarySwatch: Colors.blue,

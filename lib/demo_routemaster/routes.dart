@@ -8,7 +8,7 @@ import 'package:flutter_nav2_demo/demo_routemaster/app_state.dart';
 import 'package:flutter_nav2_demo/demo_routemaster/profile.dart';
 
 class RoutemasterRoutes {
-  RouteMap buildRouteMap(AppState appState) {
+  static RouteMap buildRouteMap(AppState appState) {
     return RouteMap(
       onUnknownRoute: (path) {
         return MaterialPage(
@@ -37,7 +37,7 @@ class RoutemasterRoutes {
     );
   }
 
-  bool _isValidCountry(String? country) {
+  static bool _isValidCountry(String? country) {
     //you would probably grab this from a DB somewhere but hard coding for demo
     List<String> countries = ['italy', 'spain', 'holland', 'columbia'];
     return countries.contains(country);

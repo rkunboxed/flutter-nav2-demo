@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_nav2_demo/common/route_data_model.dart';
+import 'package:flutter_nav2_demo/common/route_config.dart';
 import 'package:flutter_nav2_demo/demo_provider/route_manager.dart';
 import 'package:provider/provider.dart';
 
@@ -45,14 +45,14 @@ class CountryLanding extends StatelessWidget {
           if (country != 'italy') {
             return TextButton(
               onPressed: () {
-                routeManager.setNewRoutePath(DemoAppRouteData.country('italy'));
+                routeManager.setNewRoutePath(DemoAppRouteConfig.country('italy'));
               },
               child: Text('I like Italy better.'),
             );
           } else if (country != 'spain') {
             return TextButton(
               onPressed: () {
-                routeManager.setNewRoutePath(DemoAppRouteData.country('spain'));
+                routeManager.setNewRoutePath(DemoAppRouteConfig.country('spain'));
               },
               child: Text('Spain is really the best.'),
             );
