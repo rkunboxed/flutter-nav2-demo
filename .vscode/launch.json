@@ -5,34 +5,54 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Basic",
+            "name": "Debug: Basic",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "Provider",
+            "name": "Debug: Provider",
             "program": "lib/main_provider.dart",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "Routemaster",
+            "name": "Debug: Routemaster",
             "program": "lib/main_routemaster.dart",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "QLevar",
+            "name": "Debug: GoRouter",
+            "program": "lib/main_gorouter.dart",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "Debug: QLevar",
             "program": "lib/main_qlevar.dart",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "Routemaster Release",
+            "name": "Release: Provider",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "release",
+            "program": "lib/main_provider.dart"
+        },
+        {
+            "name": "Release: Routemaster",
             "type": "dart",
             "request": "launch",
             "flutterMode": "release",
             "program": "lib/main_routemaster.dart"
+        },
+        {
+            "name": "Release: GoRouter",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "release",
+            "program": "lib/main_gorouter.dart"
         },
     ]
 }

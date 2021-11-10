@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nav2_demo/common/custom_scroll.dart';
 import 'package:flutter_nav2_demo/demo_qlevar/routes.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:qlevar_router/qlevar_router.dart';
@@ -13,5 +14,6 @@ class DemoApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp.router(
         routeInformationParser: QRouteInformationParser(),
         routerDelegate: QRouterDelegate(QlevarRoutes().routes),
+        scrollBehavior: CustomScrollBehavior(),
       );
 }

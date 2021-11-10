@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
+  go_router: ^2.2.1
   provider: ^6.0.0
   qlevar_router: ^1.5.1
   routemaster: ^0.9.5

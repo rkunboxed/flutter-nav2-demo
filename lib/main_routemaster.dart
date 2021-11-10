@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_nav2_demo/common/custom_scroll.dart';
 import 'package:flutter_nav2_demo/demo_routemaster/app_state.dart';
 import 'package:flutter_nav2_demo/demo_routemaster/routes.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -26,6 +27,7 @@ class DemoApp extends StatelessWidget {
               },
             ),
             routeInformationParser: RoutemasterParser(),
+            scrollBehavior: CustomScrollBehavior(),
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),

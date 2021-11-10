@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nav2_demo/common/custom_scroll.dart';
 import 'package:flutter_nav2_demo/demo_basic/home.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
@@ -37,6 +38,7 @@ class _DemoAppState extends State<DemoApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      scrollBehavior: CustomScrollBehavior(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

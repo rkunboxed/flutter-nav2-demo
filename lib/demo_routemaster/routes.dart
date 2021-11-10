@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
+import 'package:flutter_nav2_demo/common/login.dart';
 import 'package:flutter_nav2_demo/common/not_found_page.dart';
+import 'package:flutter_nav2_demo/common/profile.dart';
 import 'package:flutter_nav2_demo/demo_routemaster/country_landing.dart';
 import 'package:flutter_nav2_demo/demo_routemaster/home.dart';
-import 'package:flutter_nav2_demo/demo_routemaster/login.dart';
 import 'package:flutter_nav2_demo/demo_routemaster/app_state.dart';
-import 'package:flutter_nav2_demo/demo_routemaster/profile.dart';
 
 class RoutemasterRoutes {
   static RouteMap buildRouteMap(AppState appState) {

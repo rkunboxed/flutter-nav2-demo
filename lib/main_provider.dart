@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nav2_demo/common/custom_scroll.dart';
 //import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_nav2_demo/common/route_config.dart';
 import 'package:flutter_nav2_demo/demo_provider/route_manager.dart';
@@ -21,6 +22,7 @@ class DemoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter Nav 2 w/Provider Demo',
+      scrollBehavior: CustomScrollBehavior(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
