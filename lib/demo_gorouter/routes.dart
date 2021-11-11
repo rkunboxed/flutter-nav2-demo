@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_nav2_demo/demo_gorouter/country_landing.dart';
 import 'package:flutter_nav2_demo/demo_gorouter/home.dart';
 import 'package:flutter_nav2_demo/common/login.dart';
+import 'package:flutter_nav2_demo/common/profile.dart';
 
 class GoRouterRoutes {
   static List<GoRoute> _routes = [
@@ -25,7 +26,7 @@ class GoRouterRoutes {
       path: '/profile',
       pageBuilder: (context, state) => MaterialPage<void>(
         key: state.pageKey,
-        child: LoginPage(),
+        child: ProfilePage(),
       ),
     ),
     GoRoute(
