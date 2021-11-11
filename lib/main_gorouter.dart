@@ -7,17 +7,23 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(DemoApp());
+  //I want to check whether the user is logged right away so initializing app state here
+  final AppState appState = AppState();
+  runApp(DemoApp(appState));
 }
 
 class DemoApp extends StatelessWidget {
+  DemoApp(this.appState, {Key? key}) : super(key: key);
+  final AppState appState;
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => AppState(),
+      create: (_) => appState,
       child: Builder(
         builder: (context) {
           return MaterialApp.router(
+            title: 'Flutter Nav 2 w/Go_Router Demo',
             routeInformationParser: _router.routeInformationParser,
             routerDelegate: _router.routerDelegate,
             scrollBehavior: CustomScrollBehavior(),
@@ -30,7 +36,7 @@ class DemoApp extends StatelessWidget {
     );
   }
 
-  final _router = GoRouter(
+  late final _router = GoRouter(
     urlPathStrategy: UrlPathStrategy.path, //removes the hash
     routes: GoRouterRoutes.routes,
     errorPageBuilder: (context, state) => MaterialPage<void>(
@@ -38,7 +44,7 @@ class DemoApp extends StatelessWidget {
       child: NotFoundPage(),
     ),
     redirect: (state) {
-      final loggedIn = AppState().routeAuthorized;
+      final loggedIn = appState.routeAuthorized;
       final goingToProtectedRoute = protectedRoutes.contains(state.location);
 
       // the user is not logged in and not headed to an unauth route, they need to login
@@ -49,7 +55,7 @@ class DemoApp extends StatelessWidget {
       // no need to redirect at all
       return null;
     },
-    refreshListenable: AppState(),
+    refreshListenable: appState,
   );
 }
 
